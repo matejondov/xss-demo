@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -8,8 +9,15 @@ export default function Home() {
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="bg-card rounded-lg shadow-xl p-8 mb-8 border">
+          <Image
+            src="/hero.png"
+            alt="XSS Demo Hero Image"
+            width={1920}
+            height={1080}
+            className="mb-4"
+          />
           <h1 className="text-4xl font-bold text-red-600 mb-4">
-            ⚠️ XSS Vulnerability Demo
+            XSS Vulnerability Demo
           </h1>
           <p className="text-foreground text-lg mb-6">
             This is an educational demonstration of Cross-Site Scripting (XSS) vulnerabilities.
@@ -19,27 +27,29 @@ export default function Home() {
           <h2 className="text-2xl font-semibold text-foreground mb-3">
             What is XSS?
           </h2>
-          <p className="text-muted-foreground mb-4">
+          <p className="text-foreground mb-4">
             Cross-Site Scripting (XSS) attacks are injection attacks where malicious scripts
             are injected into trusted websites. XSS occurs when an attacker uses a web application to send
             malicious code to a different end user.
           </p>
+
+          <div className="flex flex-row justify-evenly pt-4">
+            <Link
+              href="/vulnerable"
+              className="inline-block mb-6 text-red-600 hover:text-red-700 font-semibold bg-red-50 px-4 py-2 rounded-lg border border-red-200"
+            >
+              Go to Vulnerable Page
+            </Link>
+            <Link
+              href="/safe"
+              className="inline-block mb-6 text-green-600 hover:text-green-700 font-semibold bg-green-50 px-4 py-2 rounded-lg border border-green-200"
+            >
+              Go to Safe Page
+            </Link>
+          </div>
         </div>
 
-        <div className="flex flex-row justify-evenly">
-          <Link
-            href="/vulnerable"
-            className="inline-block mb-6 text-red-600 hover:text-red-700 font-semibold bg-red-50 px-4 py-2 rounded-lg border border-red-200"
-          >
-            ⚠️ Go to Vulnerable Page
-          </Link>
-          <Link
-            href="/safe"
-            className="inline-block mb-6 text-green-600 hover:text-green-700 font-semibold bg-green-50 px-4 py-2 rounded-lg border border-green-200"
-          >
-            ✅ Go to Safe Page
-          </Link>
-        </div>
+
 
         {/* Prevention Methods */}
         <div className="bg-card rounded-lg shadow-xl p-8 mb-8 border">
