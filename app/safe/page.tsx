@@ -35,7 +35,7 @@ function SafeContent() {
                             Welcome Message:
                         </h2>
                         {/* SAFE: React automatically escapes the value */}
-                        <div className="p-6 bg-gray-50 rounded-lg border-2 border-gray-200">
+                        <div className="p-6 bg-gray-50 rounded-lg border-2 border-gray-200 text-gray-900">
                             Welcome, {name || 'Guest'}!
                         </div>
                     </div>
@@ -48,7 +48,7 @@ function SafeContent() {
                             <div className="space-y-4 text-gray-700">
                                 <div>
                                     <h4 className="font-semibold mb-2">✅ Safe Code:</h4>
-                                    <code className="block bg-white p-3 rounded text-sm mb-2">
+                                    <code className="block bg-white p-3 rounded text-sm mb-2 text-gray-900">
                                         &lt;div&gt;Welcome, &#123;name&#125;!&lt;/div&gt;
                                     </code>
                                     <p className="text-sm text-gray-600">

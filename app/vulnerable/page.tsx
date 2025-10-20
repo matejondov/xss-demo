@@ -36,7 +36,7 @@ function VulnerableContent() {
                         </h2>
                         {/* VULNERABLE: This will execute any HTML/JavaScript in the name parameter */}
                         <div
-                            className="p-6 bg-gray-50 rounded-lg border-2 border-gray-200"
+                            className="p-6 bg-gray-50 rounded-lg border-2 border-gray-200 text-gray-900"
                             dangerouslySetInnerHTML={{ __html: `Welcome, ${name || 'Guest'}!` }}
                         />
                     </div>
@@ -52,7 +52,7 @@ function VulnerableContent() {
                                     <h4 className="font-bold text-gray-800 mb-2">
                                         1. Simple Alert:
                                     </h4>
-                                    <code className="block bg-white p-3 rounded text-sm overflow-x-auto mb-2">
+                                    <code className="block bg-white p-3 rounded text-sm overflow-x-auto mb-2 text-gray-900">
                                         ?name=&lt;script&gt;alert('XSS Attack!')&lt;/script&gt;
                                     </code>
                                     <Link
@@ -67,7 +67,7 @@ function VulnerableContent() {
                                     <h4 className="font-bold text-gray-800 mb-2">
                                         2. Phishing Attack (Fake Login Form):
                                     </h4>
-                                    <code className="block bg-white p-3 rounded text-sm overflow-x-auto mb-2 break-all">
+                                    <code className="block bg-white p-3 rounded text-sm overflow-x-auto mb-2 break-all text-gray-900">
                                         ?name=&lt;div style=&quot;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:9999;display:flex;align-items:center;justify-content:center&quot;&gt;&lt;div style=&quot;background:white;padding:40px;border-radius:10px;max-width:400px&quot;&gt;&lt;h2 style=&quot;color:red;margin-bottom:20px&quot;&gt;⚠️ Session Expired&lt;/h2&gt;&lt;p style=&quot;margin-bottom:20px&quot;&gt;Please log in again:&lt;/p&gt;&lt;form onsubmit=&quot;alert('Credentials stolen!\\nUsername: ' + this.username.value + '\\nPassword: ' + this.password.value); return false;&quot;&gt;&lt;input name=&quot;username&quot; placeholder=&quot;Username&quot; style=&quot;width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:5px&quot;&gt;&lt;input name=&quot;password&quot; type=&quot;password&quot; placeholder=&quot;Password&quot; style=&quot;width:100%;padding:10px;margin-bottom:20px;border:1px solid #ccc;border-radius:5px&quot;&gt;&lt;button type=&quot;submit&quot; style=&quot;width:100%;padding:10px;background:#007bff;color:white;border:none;border-radius:5px;cursor:pointer&quot;&gt;Login&lt;/button&gt;&lt;/form&gt;&lt;/div&gt;&lt;/div&gt;
                                     </code>
                                     <button
@@ -85,7 +85,7 @@ function VulnerableContent() {
                                     <h4 className="font-bold text-gray-800 mb-2">
                                         3. Cookie/Session Theft:
                                     </h4>
-                                    <code className="block bg-white p-3 rounded text-sm overflow-x-auto mb-2">
+                                    <code className="block bg-white p-3 rounded text-sm overflow-x-auto mb-2 text-gray-900">
                                         ?name=&lt;script&gt;alert('Cookie Data:\\n' + document.cookie);&lt;/script&gt;
                                     </code>
                                     <Link
@@ -103,7 +103,7 @@ function VulnerableContent() {
                                     <h4 className="font-bold text-gray-800 mb-2">
                                         4. DOM Manipulation:
                                     </h4>
-                                    <code className="block bg-white p-3 rounded text-sm overflow-x-auto mb-2">
+                                    <code className="block bg-white p-3 rounded text-sm overflow-x-auto mb-2 text-gray-900">
                                         ?name=&lt;script&gt;document.body.innerHTML='&lt;h1&gt;Page Hijacked!&lt;/h1&gt;'&lt;/script&gt;
                                     </code>
                                     <button
@@ -126,13 +126,13 @@ function VulnerableContent() {
                             <div className="space-y-4 text-gray-700">
                                 <div>
                                     <h4 className="font-semibold mb-1">❌ Vulnerable Code:</h4>
-                                    <code className="block bg-white p-3 rounded text-sm">
+                                    <code className="block bg-white p-3 rounded text-sm text-gray-900">
                                         dangerouslySetInnerHTML=&#123;&#123; __html: `Welcome, $&#123;name&#125;!` &#125;&#125;
                                     </code>
                                 </div>
                                 <div>
                                     <h4 className="font-semibold mb-1">✅ Safe Alternative:</h4>
-                                    <code className="block bg-white p-3 rounded text-sm">
+                                    <code className="block bg-white p-3 rounded text-sm text-gray-900">
                                         &lt;div&gt;Welcome, &#123;name&#125;!&lt;/div&gt;
                                     </code>
                                     <p className="text-sm mt-2 text-gray-600">

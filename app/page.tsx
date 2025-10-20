@@ -60,7 +60,7 @@ export default function Home() {
             </div>
             <div>
               <h3 className="text-xl font-semibold text-gray-800 mb-3">Security Headers:</h3>
-              <code className="block bg-gray-100 p-4 rounded text-xs overflow-x-auto">
+              <code className="block bg-gray-100 p-4 rounded text-xs overflow-x-auto text-gray-900">
                 <pre>{`Content-Security-Policy: 
   script-src 'self'
 X-Frame-Options: DENY
