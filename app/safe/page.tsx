@@ -23,13 +23,6 @@ function SafeContent() {
                         ✅ Safe Page - XSS Protected
                     </h1>
 
-                    <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
-                        <p className="text-green-900">
-                            <strong>✅ SAFE:</strong> This page properly escapes user input using React's default JSX behavior.
-                            Scripts in the URL will be displayed as text, not executed!
-                        </p>
-                    </div>
-
                     <div className="mb-8">
                         <h2 className="text-2xl font-semibold text-foreground mb-4">
                             Welcome Message:
@@ -41,23 +34,7 @@ function SafeContent() {
                     </div>
 
                     <div className="space-y-6">
-                        <div className="p-6 bg-muted border rounded-lg">
-                            <h3 className="text-xl font-bold text-foreground mb-3">
-                                🛡️ How This Works:
-                            </h3>
-                            <div className="space-y-4 text-foreground">
-                                <div>
-                                    <h4 className="font-semibold mb-2">✅ Safe Code:</h4>
-                                    <code className="block bg-background border p-3 rounded text-sm mb-2 text-foreground">
-                                        &lt;div&gt;Welcome, &#123;name&#125;!&lt;/div&gt;
-                                    </code>
-                                    <p className="text-sm text-muted-foreground">
-                                        React automatically escapes all values in JSX curly braces. Any HTML or JavaScript
-                                        will be rendered as plain text, preventing XSS attacks.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+
 
                         <div>
                             <h3 className="text-xl font-bold text-foreground mb-3">
@@ -84,12 +61,15 @@ function SafeContent() {
                                     <h4 className="font-bold text-foreground mb-2">
                                         2. Try HTML Injection (Won't Work):
                                     </h4>
-                                    <Link
-                                        href="/safe?name=<h1>Injected HTML</h1>"
-                                        className="inline-block px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                                    <button
+                                        onClick={() => {
+                                            const phishingPayload = `<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:9999;display:flex;align-items:center;justify-content:center"><div style="background:white;padding:40px;border-radius:10px;max-width:400px"><h2 style="color:red;margin-bottom:20px">Session Expired</h2><p style="margin-bottom:20px;color:black">Please log in again:</p><form onsubmit="alert('Credentials stolen!\\nUsername: ' + this.username.value + '\\nPassword: ' + this.password.value); return false;"><input name="username" placeholder="Username" style="width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:5px;color:black"><input name="password" type="password" placeholder="Password" style="width:100%;padding:10px;margin-bottom:20px;border:1px solid #ccc;border-radius:5px;color:black"><button type="submit" style="width:100%;padding:10px;background:#007bff;color:white;border:none;border-radius:5px;cursor:pointer">Login</button></form></div></div>`;
+                                            window.location.href = `/safe?name=${encodeURIComponent(phishingPayload)}`;
+                                        }}
+                                        className="inline-block px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 cursor-pointer"
                                     >
-                                        Test HTML Injection (Safe)
-                                    </Link>
+                                        Test Phishing Attack
+                                    </button>
                                     <p className="text-sm text-muted-foreground mt-2">
                                         The HTML will be displayed as text, not rendered as HTML.
                                     </p>
@@ -97,11 +77,29 @@ function SafeContent() {
                             </div>
                         </div>
 
-                        <div className="p-6 bg-foreground border-l-4 border-green-500 rounded-lg">
+                        <div className="p-6 bg-muted border rounded-lg">
+                            <h3 className="text-xl font-bold text-foreground mb-3">
+                                🛡️ How This Works:
+                            </h3>
+                            <div className="space-y-4 text-foreground">
+                                <div>
+                                    <h4 className="font-semibold mb-2">✅ Safe Code:</h4>
+                                    <code className="block bg-background border p-3 rounded text-sm mb-2 text-foreground">
+                                        &lt;div&gt;Welcome, &#123;name&#125;!&lt;/div&gt;
+                                    </code>
+                                    <p className="text-sm text-muted-foreground">
+                                        React automatically escapes all values in JSX curly braces. Any HTML or JavaScript
+                                        will be rendered as plain text, preventing XSS attacks.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="p-6 bg-background border-l-4 border-1 border-green-500 rounded-lg">
                             <h3 className="text-xl font-bold text-green-600 mb-3">
                                 🎯 Key Takeaways:
                             </h3>
-                            <ul className="list-disc list-inside text-background space-y-2">
+                            <ul className="list-disc list-inside text-foreground space-y-2">
                                 <li>Always use React's default JSX syntax for user input</li>
                                 <li>React automatically escapes values in &#123;&#125;</li>
                                 <li>Never use dangerouslySetInnerHTML with user input</li>
@@ -121,7 +119,7 @@ function SafeContent() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

@@ -24,15 +24,6 @@ export default function Home() {
             <strong className="text-red-600"> DO NOT use these patterns in production code!</strong>
           </p>
 
-          <h2 className="text-2xl font-semibold text-foreground mb-3">
-            What is XSS?
-          </h2>
-          <p className="text-foreground mb-4">
-            Cross-Site Scripting (XSS) attacks are injection attacks where malicious scripts
-            are injected into trusted websites. XSS occurs when an attacker uses a web application to send
-            malicious code to a different end user.
-          </p>
-
           <div className="flex flex-row justify-evenly pt-4">
             <Link
               href="/vulnerable"
