@@ -46,16 +46,19 @@ function VulnerableContent() {
                                         1. Simple Alert:
                                     </h4>
                                     <code className="block bg-background border p-3 rounded text-sm overflow-x-auto mb-2 text-foreground">
-                                        ?name=&lt;script&gt;alert('XSS Attack!')&lt;/script&gt;
+                                        ?name=&lt;img src=x onerror="alert('XSS Attack!')"&gt;
                                     </code>
                                     <button
                                         onClick={() => {
-                                            window.location.href = "/vulnerable?name=" + encodeURIComponent("<script>alert('XSS Attack!')</script>");
+                                            window.location.href = "/vulnerable?name=" + encodeURIComponent('<img src=x onerror="alert(\'XSS Attack!\')">');
                                         }}
                                         className="inline-block px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 cursor-pointer"
                                     >
                                         Test This Attack
                                     </button>
+                                    <p className="text-sm text-muted-foreground mt-2">
+                                        Note: Some browsers like Brave may block script tags. This uses an img tag with onerror event instead.
+                                    </p>
                                 </div>
 
                                 <div className="p-4 bg-muted border rounded-lg">
