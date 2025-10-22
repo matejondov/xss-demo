@@ -28,7 +28,7 @@ function SafeContent() {
                             Welcome Message:
                         </h2>
                         {/* SAFE: React automatically escapes the value */}
-                        <div className="p-6 bg-muted rounded-lg border text-foreground">
+                        <div className="p-6 bg-muted rounded-lg border text-foreground break-words overflow-wrap-anywhere">
                             Welcome, {name || 'Guest'}!
                         </div>
                     </div>
